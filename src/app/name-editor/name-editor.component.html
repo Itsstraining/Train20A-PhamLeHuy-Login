@@ -1,0 +1,60 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width">
+        <mat-label>
+            <label>
+                First Name:
+            </label>
+        </mat-label>
+        <input matInput formControlName="firstName">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+        <mat-label>
+            <label>
+                Last Name:
+            </label>
+        </mat-label>
+        <input matInput formControlName="lastName">
+    </mat-form-field><br>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Telephone</mat-label>
+        <span matPrefix>+84 &nbsp;</span>
+        <input formControlName="telephone" type="number" matInput placeholder="555-555-1234">
+        <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field><br>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>
+            <label>
+                Name User:
+            </label>
+        </mat-label>
+        <input matInput formControlName="users">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Password:</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Confirm Password:</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field><br>
+
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Postal Code</mat-label>
+        <input matInput formControlName="postalCode" #postalCode maxlength="5" placeholder="Ex. 94105">
+        <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+    </mat-form-field><br>
+    <button type="submit" [disabled]="!profileForm.value">Submit</button>
+</form>
